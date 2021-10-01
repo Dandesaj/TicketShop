@@ -1,5 +1,5 @@
 package Modelo;
 
-public class EntradaVip {
+public class EntradaVip extends Entrada {
 
 }

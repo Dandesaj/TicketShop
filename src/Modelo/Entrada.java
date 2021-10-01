@@ -2,7 +2,7 @@ package Modelo;
 import Modelo.Cliente;
 public class Entrada {
 	private int precio; 
-	private int noAsiento;
+	private int numAsiento;
 	private boolean usado; 
 	private Cliente cliente;
 	
@@ -14,10 +14,10 @@ public class Entrada {
 		this.precio = precio;
 	}
 	public int getNoAsiento() {
-		return noAsiento;
+		return numAsiento;
 	}
 	public void setNoAsiento(int noAsiento) {
-		this.noAsiento = noAsiento;
+		this.numAsiento = noAsiento;
 	}
 	public boolean isUsado() {
 		return usado;

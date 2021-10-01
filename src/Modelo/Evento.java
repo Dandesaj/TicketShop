@@ -8,8 +8,13 @@ public class Evento {
 	private List ListaEntradas;
 	private boolean EnCurso;
 	
-	
-	
+	public Evento(String nombreEvento, int edadMinima, List listaEntradas, boolean enCurso) {
+		super();
+		NombreEvento = nombreEvento;
+		EdadMinima = edadMinima;
+		ListaEntradas = listaEntradas;
+		EnCurso = enCurso;
+	}
 	public String getNombreEvento() {
 		return NombreEvento;
 	}

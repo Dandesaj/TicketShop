@@ -1,5 +1,5 @@
 package Modelo;
 
-public class Vendedor {
+public class Vendedor extends Persona {
 
 }

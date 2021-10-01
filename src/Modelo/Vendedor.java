@@ -1,6 +1,7 @@
 package Modelo;
 
 public class Vendedor extends Persona {
+
 	private int entradasVendidas;
 	
 		
@@ -29,6 +30,7 @@ public class Vendedor extends Persona {
 	public void actualizarLista() {
 	}
 	}
+
 
 
 

@@ -3,6 +3,7 @@ package Modelo;
 public class Cliente extends Persona{
   private int telefono;
 
+
   public Cliente(String nombre,String rut,String fechaNac, int telefono) {
 	  super(nombre, rut, fechaNac);
 	  this.telefono = telefono;

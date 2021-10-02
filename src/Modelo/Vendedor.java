@@ -2,36 +2,44 @@ package Modelo;
 
 public class Vendedor extends Persona {
 
-	private int entradasVendidas;
+	private int entradasNormalesVendidas;
+	private int entradasVipVendidas;
+	public Vendedor() {
+		super("","","");
+	}
 	
-		
 	public Vendedor(String nombre,String rut,String fechaNac) {
 		super(nombre, rut, fechaNac);
-		this.entradasVendidas =0;
+		this.entradasNormalesVendidas =0;
+		this.entradasVipVendidas =0;
 	}
 
-	public int getEntradasVendidas() {
-		return entradasVendidas;
+	
+
+	public int getEntradasNormalesVendidas() {
+		return entradasNormalesVendidas;
 	}
 
-	public void setEntradasVendidas(int entradasVendidas) {
-		this.entradasVendidas = entradasVendidas;
+	public void setEntradasNormalesVendidas(int entradasNormalesVendidas) {
+		this.entradasNormalesVendidas = entradasNormalesVendidas;
+	}
+
+	public int getEntradasVipVendidas() {
+		return entradasVipVendidas;
+	}
+
+	public void setEntradasVipVendidas(int entradasVipVendidas) {
+		this.entradasVipVendidas = entradasVipVendidas;
 	}
 
 	@Override
 	public String toString() {
-		return "Vendedor [entradasVendidas=" + entradasVendidas + "]";
+		return "Vendedor: "+this.nombre;
 	}
 	
-	public void vendeEntrada() {
-	}
+}
 	
 	
-	public void actualizarLista() {
-	}
-	}
-
-
 
 
 

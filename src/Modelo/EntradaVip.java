@@ -1,14 +1,21 @@
 package Modelo;
 
 public class EntradaVip extends Entrada {
-	private boolean Regalo;
+	private boolean regalo;
+	
+	public EntradaVip(int precio, int numAsiento, boolean usado) {
+		super(precio, numAsiento, usado);
+		
+	}
 
+	
+	
 	public boolean isRegalo() {
-		return Regalo;
+		return regalo;
 	}
 
 	public void setRegalo(boolean regalo) {
-		Regalo = regalo;
+		this.regalo = regalo;
 	}
 	
 	

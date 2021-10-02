@@ -5,6 +5,7 @@ public class Persona {
 	protected String rut;
 	protected String fechaNac;//dd-mm-aaaa
 	
+	//CONSTRUCTORES
 	public Persona () {
 		
 	}
@@ -15,37 +16,6 @@ public class Persona {
 		this.rut = rut;
 		this.fechaNac = fechaNac;
 		}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getRut() {
-		return rut;
-	}
-
-	public void setRut(String rut) {
-		this.rut = rut;
-	}
-
-	public String getFechaNac() {
-		return fechaNac;
-	}
-
-	public void setFechaNac(String fechaNac) {
-		this.fechaNac = fechaNac;
-	}
-
-	@Override
-	public String toString() {
-		return "Persona [nombre=" + nombre + ", rut=" + rut + ", fechaNac=" + fechaNac + "]";
-	}
-	
-	
 	public int calcularEdad(String hoy) { //dd-mm-aaaa
 		
 		//int dia = Integer.parseInt(fechaCliente.substring(0,2));
@@ -58,5 +28,35 @@ public class Persona {
 	
 		return edad;
 	}
+	
+	
+	//GETTER Y SETTER
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getRut() {
+		return rut;
+	}
+	public void setRut(String rut) {
+		this.rut = rut;
+	}
+
+	public String getFechaNac() {
+		return fechaNac;
+	}
+	public void setFechaNac(String fechaNac) {
+		this.fechaNac = fechaNac;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", rut=" + rut + ", fechaNac=" + fechaNac + "]";
+	}
+	
+	
 	
 }

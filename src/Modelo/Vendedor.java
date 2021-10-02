@@ -4,6 +4,8 @@ public class Vendedor extends Persona {
 
 	private int entradasNormalesVendidas;
 	private int entradasVipVendidas;
+	
+	//Constructor con 
 	public Vendedor() {
 		super("","","");
 	}
@@ -15,19 +17,18 @@ public class Vendedor extends Persona {
 	}
 
 	
-
+	//GETTER Y SETTER NORMALES
 	public int getEntradasNormalesVendidas() {
 		return entradasNormalesVendidas;
 	}
-
 	public void setEntradasNormalesVendidas(int entradasNormalesVendidas) {
 		this.entradasNormalesVendidas = entradasNormalesVendidas;
 	}
 
+	//GETTER Y SETTER VIP
 	public int getEntradasVipVendidas() {
 		return entradasVipVendidas;
 	}
-
 	public void setEntradasVipVendidas(int entradasVipVendidas) {
 		this.entradasVipVendidas = entradasVipVendidas;
 	}

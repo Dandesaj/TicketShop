@@ -43,50 +43,43 @@ public class Main {
 			
 			
 			switch(p) {
-			case "1":
-				agregar();				
-				break;		
+			// Agregar Evento
+			case "1": 		agregar();		break;		
 				
-			case "2":
+			//Ver y Modificar Estado de Eventos
+			case "2":		vender(gestionador);	break;
 				
-				vender(gestionador);
-				break;
-				
-			case "3": // Ver y Modificar Estado de Eventos
+			// Ver y Modificar Estado de Eventos
+			case "3": 
 				mostrarEventos();
 				modificarEstadoEvento();
 				break;
 				
-			case "4": //Mostrar Entradas Vendidas
+			//Mostrar Entradas Vendidas
+			case "4": 
 				for(Evento temp : eventos ) {
 					System.out.println(temp.getNombreEvento());
 					temp.regitroDeEntradasVendidas();
 				}
 				break;	
 				
-			case "5": //Ingresar a Eventos
+			//Ingresar a Eventos	
+			case "5": 		ingresarAEvento();		break;
 				
-				ingresarAEvento();
-				
-				break;
-				
-			case "6": //Estadisticas de vendedores
+			//Estadisticas de vendedores
+			case "6": 
 				int indiceVendedor = getIndiceVendedor();
 				System.out.println("Entradas Vendidas: " +	vendedores.get(indiceVendedor).getNombre() + " ha vendido:\n"+
 						vendedores.get(indiceVendedor).getEntradasNormalesVendidas() + " entrada/s normal/es \n"
 						+ vendedores.get(indiceVendedor).getEntradasVipVendidas() + " entrada/s VIP");
-				
-				
 				break;
-			default:
-				System.out.println("Opcion no valida");
 				
+			default: 	System.out.println("Opcion no valida");				
 			}
-		}// while	
-		
-		
+		}// while		
 	}
 	
+	//AGREGA EVENTOS, CLIENTES Y VENDEDORES DE PRUEBA
 	public static void poblarListas() {
 		Vendedor mrVenta = new Vendedor("mrVenta","19.201.564-6","9-04-1990");
 		Vendedor ticketVacilon = new Vendedor("ticketVacilon","9.687.583-3","22-01-1972");
@@ -106,77 +99,7 @@ public class Main {
 		agregarEvento(cenaConRorri);
 	}
 	
-	public static String getHoy() {
-		return hoy;
-	}
-
-	public static void setHoy(String hoy) {
-		Main.hoy = hoy;
-	}
-
-	public static void ingresarAEvento() {		
-		int indiceEvento = getIndiceEvento();
-		//lista filtrrada
-		eventos.get(indiceEvento).revisarEntrada(clientes.get(getIndiceCliente()));
-	}
-	
-	public static int getIndiceCliente() {
-
-		Scanner sc= new Scanner(System.in);
-		
-		System.out.println("Quien Eres? ");
-		mostrarClientes();
-		int indiceCliente=sc.nextInt();
-		
-		return indiceCliente;
-	}
-
-	public static int getIndiceEvento() {
-
-		Scanner sc= new Scanner(System.in);
-		
-		System.out.println("Seleccione un evento");
-		mostrarEventos();
-		int indiceEvento=sc.nextInt();
-		
-		return indiceEvento;
-	}
-	
-	public static int getIndiceVendedor() {
-
-		Scanner sc= new Scanner(System.in);
-		
-		System.out.println("Seleccione un vendedor");
-		mostrarVendedores();
-		int indiceVendedor=sc.nextInt();
-		
-		return indiceVendedor;
-	}
-	
-	public static Cliente crearCliente() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Ingrese su nombre");
-		String nombre = sc.nextLine();
-		System.out.println("Ingrese su RUT");
-		String rut = sc.nextLine();
-		System.out.println("Ingrese su Fecha Nacimiento");
-		String fechaNac = sc.nextLine();
-		System.out.println("Ingrese su telefono");
-		int telefono = sc.nextInt();
-		
-		Cliente c = new Cliente(nombre,rut,fechaNac,telefono);
-		clientes.add(c);
-		return c;
-	}
-	
-	public static void vender(Venta gestionador) {		
-		int indiceEvento = getIndiceEvento();
-		int indiceVendedor = getIndiceVendedor();
-		
-		gestionador.vendeEntrada(eventos.get(indiceEvento),vendedores.get(indiceVendedor),crearCliente(),getHoy());
-		eventos.get(indiceEvento).registroEntradas();
-	}
-	
+	//AGREGAR EVENTO NUEVO
 	public static void agregar() {
 		Scanner sc= new Scanner(System.in);
 		String nombreEvento="";
@@ -198,6 +121,7 @@ public class Main {
 		entradasVIP=sc.nextInt();
 		
 		if(entradasVIP>0) {
+			sc.nextLine();
 			System.out.println("Cual va ser el regalo VIP?");
 			regaloVIP=sc.nextLine();
 		}
@@ -208,23 +132,11 @@ public class Main {
 		
 		
 	}
-	
-	public static void mostrarEventos() {
-		int i=0;
-		while (i<eventos.size()) {
-			System.out.println(i + ".- "+ eventos.get(i).toString());
-				i++;			
-		}		
+	public static void agregarEvento(Evento nuevoEvento) {
+		eventos.add(nuevoEvento);
 	}
 	
-	public static void mostrarClientes() {
-		int i=0;
-		while (i<clientes.size()) {
-			System.out.println(i + ".- "+ clientes.get(i).toString());
-				i++;			
-		}		
-	}
-	
+	//MODIFICA EL ESTADO EN CURSO DE UN EVENTO
 	public static void modificarEstadoEvento() {
 		System.out.println("Desea modificar el estado de algun evento? (si/no)");
 		Scanner sc= new Scanner(System.in);
@@ -246,6 +158,85 @@ public class Main {
 		}
 	}
 	
+	//VENDER ENTRADA
+	public static void vender(Venta gestionador) {		
+		int indiceEvento = getIndiceEvento();
+		int indiceVendedor = getIndiceVendedor();
+		
+		gestionador.vendeEntrada(eventos.get(indiceEvento),vendedores.get(indiceVendedor),crearCliente(),getHoy());
+		eventos.get(indiceEvento).registroEntradas();
+	}
+	
+	//COMPARA ENTRADA DE EVENTO CON CLIENTE SELECCIONADO POR MINI MENU
+	public static void ingresarAEvento() {		
+		int indiceEvento = getIndiceEvento();
+		//FILTRAR
+		eventos.get(indiceEvento).revisarEntrada(clientes.get(getIndiceCliente()));
+	}
+	
+	//CREA CLIENTE NUEVO (AL MOMENTO DE COMPRAR ENTRADA)
+	public static Cliente crearCliente() {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Ingrese su nombre");
+			String nombre = sc.nextLine();
+			System.out.println("Ingrese su RUT");
+			String rut = sc.nextLine();
+			System.out.println("Ingrese su Fecha Nacimiento");
+			String fechaNac = sc.nextLine();
+			System.out.println("Ingrese su telefono");
+			int telefono = sc.nextInt();
+			
+			Cliente c = new Cliente(nombre,rut,fechaNac,telefono);
+			clientes.add(c);
+			return c;
+		}
+		
+		
+	//MINI MENUS QUE RETORNAN EL INDICE DEL ELEMENTO SELECIONADO DE LA LISTA
+	public static int getIndiceCliente() {
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Quien Eres? ");
+		mostrarClientes();
+		int indiceCliente=sc.nextInt();
+		
+		return indiceCliente;
+	}
+	public static int getIndiceEvento() {
+
+		Scanner sc= new Scanner(System.in);
+		
+		System.out.println("Seleccione un evento");
+		mostrarEventos();
+		int indiceEvento=sc.nextInt();
+		
+		return indiceEvento;
+	}
+	public static int getIndiceVendedor() {
+
+		Scanner sc= new Scanner(System.in);
+		
+		System.out.println("Seleccione un vendedor");
+		mostrarVendedores();
+		int indiceVendedor=sc.nextInt();
+		
+		return indiceVendedor;
+	}
+	
+	//IMPRIMIR LISTAS A CONSOLA
+	public static void mostrarEventos() {
+		int i=0;
+		while (i<eventos.size()) {
+			System.out.println(i + ".- "+ eventos.get(i).toString());
+				i++;			
+		}		
+	}
+	public static void mostrarClientes() {
+		int i=0;
+		while (i<clientes.size()) {
+			System.out.println(i + ".- "+ clientes.get(i).toString());
+				i++;			
+		}		
+	}
 	public static void mostrarVendedores() {
 		int i=0;
 		while (i<vendedores.size()) {
@@ -253,27 +244,16 @@ public class Main {
 				i++;			
 		}
 	}
+		
 	
-	public static void agregarEvento(Evento nuevoEvento) {
-		eventos.add(nuevoEvento);
+	//GETTER SETTER
+	public static String getHoy() {
+		return hoy;
 	}
-	
-	public boolean buscarEvento(String nombre) {
-		boolean encontrado =false;
-		int i=0;
-		while (encontrado==false && i<eventos.size()) {
-			if(eventos.get(i).getNombreEvento().compareToIgnoreCase(nombre)==0) {
-				encontrado=true;
-			}else{
-				i++;
-			}
-		}
-		if(encontrado) {
-			//Hace algo si se encontro el estudiante
-		}else {
-			System.out.println("Evento no existe");
-		}
-		return encontrado;
+	public static void setHoy(String hoy) {
+		Main.hoy = hoy;
 	}
 
+	
+	
 }
